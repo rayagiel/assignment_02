@@ -188,23 +188,20 @@ def summarize_by_item(cleaned_data: list[dict]) -> list[dict]:
       "sort by revenue, biggest first, and use the name to break ties."
     """
     # TODO: your code here
-    # running_totals ={}
-    # for thing in cleaned_data:
-    #   for thing["item"]:
-    #     if thing["item"] not in running_totals.keys():
-    #       running_total["item"] = thing["item"]
-    #       running_total["units_sold"] = 0
-    #       running_total["revenue"] = 0
-        
-    #     running_total["units_sold"] = 
-    #       running_total["revenue"] = 0
+    running_totals ={}
+    for thing in cleaned_data:
+      item = thing["item"]
+      quant = thing["qty"]
+      revenue = thing["total_revenue"]
+      if item not in running_totals.keys():
+        running_totals[item] = {"item": item, "units_sold": 0, "revenue": 0.0}
+      running_totals[item]["units_sold"] += quant
+      running_totals[item]["revenue"] += revenue
+    result = sorted(totals.values()), key=lambda entry: (-entry["revenue"], entry["item"])
 
-              
-      
-    #   if thing["item"] not in 
-    #     for key in item:
-    #         if key == ""
-    pass
+    return result 
+
+
 
 
 def summarize_by_day(cleaned_data: list[dict]) -> list[dict]:
