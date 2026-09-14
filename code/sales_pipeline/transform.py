@@ -48,7 +48,15 @@ def clean_currency(value) -> float:
       report of 400 good rows.
     """
     # TODO: your code here
-    pass
+    if value == None:
+      value3 = 0
+    value2 = str(value)
+    value3 = value2.replace("$","").replace(",","")
+    try:
+       return float(value3)
+    except ValueError:
+        return 0.0
+    
 
 
 def clean_quantity(value) -> int:
@@ -74,8 +82,13 @@ def clean_quantity(value) -> int:
       data, and bad data becomes `0`.
     """
     # TODO: your code here
-    pass
-
+    if value == None:
+          value2 = "0"
+    value2 = str(value).strip()
+    try:
+        return int(value2)
+    except ValueError:
+            return 0
 
 def clean_sales_data(raw_data: list[dict]) -> list[dict]:
     """Clean every raw row and add the revenue it earned.
@@ -105,7 +118,16 @@ def clean_sales_data(raw_data: list[dict]) -> list[dict]:
       a second time.
     """
     # TODO: your code here
-    pass
+    result = []
+    for item in raw_data:
+      item1 = item
+      item1["price"] = clean_currency(item["price"])  
+      item1["qty"] = clean_quantity(item["qty"]) 
+      price = item1["price"]
+      quantity = item1["qty"]
+      item1["total_revenue"] = price * quantity
+      result.append(item1)
+    return result
 
 
 def calculate_total_revenue(cleaned_data: list[dict]) -> float:
@@ -129,8 +151,10 @@ def calculate_total_revenue(cleaned_data: list[dict]) -> float:
       `clean_sales_data`, so `row["total_revenue"]` is a number you can trust.
     """
     # TODO: your code here
-    pass
-
+    total = 0
+    for item in cleaned_data:
+      total += item["total_revenue"]
+    return float(total)
 
 def summarize_by_item(cleaned_data: list[dict]) -> list[dict]:
     """Roll the row-level data up to one entry per item.
@@ -164,6 +188,22 @@ def summarize_by_item(cleaned_data: list[dict]) -> list[dict]:
       "sort by revenue, biggest first, and use the name to break ties."
     """
     # TODO: your code here
+    # running_totals ={}
+    # for thing in cleaned_data:
+    #   for thing["item"]:
+    #     if thing["item"] not in running_totals.keys():
+    #       running_total["item"] = thing["item"]
+    #       running_total["units_sold"] = 0
+    #       running_total["revenue"] = 0
+        
+    #     running_total["units_sold"] = 
+    #       running_total["revenue"] = 0
+
+              
+      
+    #   if thing["item"] not in 
+    #     for key in item:
+    #         if key == ""
     pass
 
 
