@@ -48,12 +48,11 @@ def clean_currency(value) -> float:
       report of 400 good rows.
     """
     # TODO: your code here
-    if value == None:
-      value3 = 0
-    value2 = str(value)
-    value3 = value2.replace("$","").replace(",","")
+    if value is None:
+      return 0.0
+    value2 = str(value).replace("$","").replace(",","")
     try:
-       return float(value3)
+       return float(value2)
     except ValueError:
         return 0.0
     
