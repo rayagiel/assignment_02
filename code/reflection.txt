@@ -5,4 +5,7 @@ the three 3 using one package that I could reuse in the 3 reports to make the co
 I struggled with grouping by and writing the summarize_by_item function because I was unsure of how to store the data as I was 
 looping through it. Next time, I will try to use the debugger to see where each line of the code gets me instead of
  rerunning the unit test several times. Going forward, I will review data types and how to access lists of dictionaries
- and vice versa. I will also practice the seed promp. 
+ and vice versa. I will also practice the seed prompt. I will continue to practice and study writing _init_ because I 
+ struggled with some of that syntax. Initially, I did not realize the __all__ line needed all of the functions 
+ as strings and I was formatting that incorrectly. I believe practicing will help me ingrain those patterns so it 
+ does not stump me next time. 
