@@ -52,7 +52,7 @@ if len(sys.argv) > 1 and sys.argv[1].strip() != "":
 
 # TODO: print the header, exactly:   === FINANCE: Daily Sales Detail ===
 #       then print() on its own for a blank line.
-print("   === FINANCE: Daily Sales Detail ===")
+print('   === FINANCE: Daily Sales Detail ===')
 print()
 
 # 1. Extract — get the raw data out of the source system.
@@ -78,4 +78,4 @@ total_revenue = calculate_total_revenue(clean_data)
 #          will need the same trick in the next two reports.
 print_sales_table(clean_data)
 print()
-print(f"Total Pipeline Revenue: ${total_revenue:,.2f}")
+print(f'Total Pipeline Revenue: ${total_revenue:,.2f}')

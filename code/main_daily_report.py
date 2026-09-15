@@ -50,10 +50,10 @@ if len(sys.argv) > 1 and sys.argv[1].strip() != "":
     seed = int(sys.argv[1])
 
 # program 
-print("=== OPERATIONS: Sales by Day ===")
+print('   === OPERATIONS: Sales by Day ===')
 print()
 
-    # data handling
+# data handling
 raw_data = get_raw_sales_data(seed)
 clean_data = clean_sales_data(raw_data)
 summary_by_date = summarize_by_day(clean_data)
@@ -65,6 +65,5 @@ revenue_winner_total = revenue_winner["revenue"]
 print_day_table(summary_by_date)
 print()
 print(f"Total Revenue:          ${total_revenue:,.2f}")
-print(f"Busiest day by revenue: {revenue_winner["date"]} (${revenue_winner_total:,.2f})")
-print(f"Busiest day by units:   {sales_winner["date"]} ({sales_winner["units_sold"]} units)")
-
+print(f"Busiest day by revenue: {revenue_winner['date']} (${revenue_winner_total:,.2f})")
+print(f"Busiest day by units:   {sales_winner['date']} ({sales_winner['units_sold']} units)")

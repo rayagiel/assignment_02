@@ -18,6 +18,7 @@ Before running:  pip install -r requirements.txt
 """
 
 import sys
+from sales_pipeline import get_raw_sales_data, clean_sales_data, print_item_table, summarize_by_item, find_top_entry
 
 # --- The report ------------------------------------------------------------------
 #
@@ -29,8 +30,7 @@ import sys
 # `main_finance_report.py` is your worked example for anything structural.
 
 # TODO: import what this report needs from the package.
-
-from sales_pipeline import get_raw_sales_data, clean_sales_data, print_item_table, summarize_by_item, find_top_entry
+# at the top of the file, under `import sys` — this comment sits here only so you can see what to import.
 
 # TODO: handle the optional dataset seed. This is the same three lines the Finance
 #       report has — read them there, then write them here yourself.
@@ -40,7 +40,7 @@ if len(sys.argv) > 1 and sys.argv[1].strip() != "":
 
 # TODO: print the header, exactly:   === MARKETING: Revenue by Item ===
 #       then a blank line.
-print("   === MARKETING: Revenue by Item ===")
+print('   === MARKETING: Revenue by Item ===')
 print()
 
 # 1. Extract — the same source Finance uses, called the same way.
@@ -63,7 +63,7 @@ revenue_winner = find_top_entry(summarized_data)
 #        Top seller by revenue: Gizmo Pro ($1,200.00)
 #        Top seller by units:   Widget C (15 units)
 # TODO
-revenue_winner_total = revenue_winner["revenue"]
+revenue_winner_total = revenue_winner['revenue']
 print_item_table(summarized_data)
-print(f"Top seller by revenue: {revenue_winner["item"]} (${revenue_winner_total:,.2f})")
-print(f"Top seller by units:   {sales_winner["item"]} ({sales_winner["units_sold"]} units)")
+print(f'Top seller by revenue: {revenue_winner["item"]} (${revenue_winner_total:,.2f})')
+print(f'Top seller by units:   {sales_winner["item"]} ({sales_winner["units_sold"]} units)')

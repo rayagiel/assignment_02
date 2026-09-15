@@ -22,7 +22,7 @@ anything you have not written yet.
 
 
 def clean_currency(value) -> float:
-    """Convert a raw price into a float, using 0.0 when it cannot be read.
+  """Convert a raw price into a float, using 0.0 when it cannot be read.
 
     Prices arrive in several shapes, and some do not arrive at all. Strip the
     decoration (`$` and `,`) before handing the text to `float()`.
@@ -48,14 +48,13 @@ def clean_currency(value) -> float:
       report of 400 good rows.
     """
     # TODO: your code here
-    if value is None:
-      return 0.0
-    value2 = str(value).replace("$","").replace(",","")
-    try:
-       return float(value2)
-    except ValueError:
-        return 0.0
-    
+  if value is None:
+    return 0.0
+  value2 = str(value).replace("$","").replace(",","")
+  try:
+    return float(value2)
+  except ValueError:
+    return 0.0
 
 
 def clean_quantity(value) -> int:
@@ -82,12 +81,12 @@ def clean_quantity(value) -> int:
     """
     # TODO: your code here
     if value == None:
-          value2 = "0"
+      value2 = "0"
     value2 = str(value).strip()
     try:
-        return int(value2)
+      return int(value2)
     except ValueError:
-            return 0
+      return 0
 
 def clean_sales_data(raw_data: list[dict]) -> list[dict]:
     """Clean every raw row and add the revenue it earned.
@@ -192,7 +191,7 @@ def summarize_by_item(cleaned_data: list[dict]) -> list[dict]:
       item = thing["item"]
       quant = thing["qty"]
       revenue = thing["total_revenue"]
-      if item not in running_totals.keys():
+      if item not in running_totals:
         running_totals[item] = {"item": item, "units_sold": 0, "revenue": 0.0}
       running_totals[item]["units_sold"] += quant
       running_totals[item]["revenue"] += revenue
@@ -235,7 +234,7 @@ def summarize_by_day(cleaned_data: list[dict]) -> list[dict]:
       date = thing["date"]
       quant = thing["qty"]
       revenue = thing["total_revenue"]
-      if date not in running_totals.keys():
+      if date not in running_totals:
         running_totals[date] = {"date": date, "units_sold": 0, "revenue": 0.0}
       running_totals[date]["units_sold"] += quant
       running_totals[date]["revenue"] += revenue
@@ -278,7 +277,7 @@ def find_top_entry(summary: list[dict], field: str = "revenue") -> dict:
        return {}
     else:
       for item in summary:
-        if winner == {}:
+        if not winner:
           winner = item
         else:
           if item[field] > winner[field]:
