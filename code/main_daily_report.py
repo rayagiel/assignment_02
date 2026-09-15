@@ -47,7 +47,7 @@ seed = None
 if len(sys.argv) > 1 and sys.argv[1].strip() != "":
     seed = int(sys.argv[1])
 
-print('   === OPERATIONS: Sales by Day ===')
+print('=== OPERATIONS: Sales by Day ===')
 print()
 
 raw_data = get_raw_sales_data(seed)
