@@ -1,3 +1,4 @@
+
 After completing this assignment, I feel comfortable with the ETL framework. It makes sense to me that you extract, 
 transform, then load the data for the human. I learned how to write each step in its own python module and then 
 use an __init__.py file to compile everything into a public API. This allowed me to call all of those functions from 
