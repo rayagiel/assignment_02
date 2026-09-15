@@ -62,7 +62,7 @@ raw_data = get_raw_sales_data(seed)
 # 2. Transform — clean it, then total it.
 #    TODO: call clean_sales_data(raw_data) and store it in `clean_data`.
 #    TODO: call calculate_total_revenue(clean_data) and store it in `total_revenue`.
-clean_data = clean_sales_date(raw_data)
+clean_data = clean_sales_data(raw_data)
 total_revenue = calculate_total_revenue(clean_data)
 
 

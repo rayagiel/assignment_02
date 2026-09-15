@@ -1,6 +1,8 @@
-Write your reflection here.
-
-See reflection.md for what makes a good reflection — be specific, use the
-terminology from this assignment (package, module, ETL, coercion, public API,
-relative import, accumulator, group by, unit vs. integration test), and make it
-actionable.
+After completing this assignment, I feel comfortable with the ETL framework. It makes sense to me that you extract, 
+transform, then load the data for the human. I learned how to write each step in its own python module and then 
+use an __init__.py file to compile everything into a public API. This allowed me to call all of those functions from 
+the three 3 using one package that I could reuse in the 3 reports to make the code concise and easy to read. 
+I struggled with grouping by and writing the summarize_by_item function because I was unsure of how to store the data as I was 
+looping through it. Next time, I will try to use the debugger to see where each line of the code gets me instead of
+ rerunning the unit test several times. Going forward, I will review data types and how to access lists of dictionaries
+ and vice versa. I will also practice the seed promp. 

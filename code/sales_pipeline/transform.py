@@ -197,11 +197,7 @@ def summarize_by_item(cleaned_data: list[dict]) -> list[dict]:
         running_totals[item] = {"item": item, "units_sold": 0, "revenue": 0.0}
       running_totals[item]["units_sold"] += quant
       running_totals[item]["revenue"] += revenue
-    result = sorted(totals.values()), key=lambda entry: (-entry["revenue"], entry["item"])
-
-    return result 
-
-
+    return sorted(running_totals.values(), key=lambda entry: (-entry["revenue"], entry["item"]))
 
 
 def summarize_by_day(cleaned_data: list[dict]) -> list[dict]:
@@ -235,7 +231,16 @@ def summarize_by_day(cleaned_data: list[dict]) -> list[dict]:
       date" case, or the first row of each day has nothing to add itself to.
     """
     # TODO: your code here
-    pass
+    running_totals={}
+    for thing in cleaned_data:
+      date = thing["date"]
+      quant = thing["qty"]
+      revenue = thing["total_revenue"]
+      if date not in running_totals.keys():
+        running_totals[date] = {"date": date, "units_sold": 0, "revenue": 0.0}
+      running_totals[date]["units_sold"] += quant
+      running_totals[date]["revenue"] += revenue
+    return sorted(running_totals.values(), key=lambda entry: entry["date"])
 
 
 def find_top_entry(summary: list[dict], field: str = "revenue") -> dict:
@@ -269,4 +274,14 @@ def find_top_entry(summary: list[dict], field: str = "revenue") -> dict:
       someone asks for `units_sold`.
     """
     # TODO: your code here
-    pass
+    winner = {}
+    if summary == []:
+       return {}
+    else:
+      for item in summary:
+        if winner == {}:
+          winner = item
+        else:
+          if item[field] > winner[field]:
+              winner = item
+      return winner

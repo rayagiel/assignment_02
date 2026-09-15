@@ -30,24 +30,32 @@ import sys
 
 # TODO: import what this report needs from the package.
 
+from sales_pipeline import get_raw_sales_data, clean_sales_data, print_item_table, summarize_by_item, find_top_entry
 
 # TODO: handle the optional dataset seed. This is the same three lines the Finance
 #       report has — read them there, then write them here yourself.
-
+seed = None
+if len(sys.argv) > 1 and sys.argv[1].strip() != "":
+    seed = int(sys.argv[1])
 
 # TODO: print the header, exactly:   === MARKETING: Revenue by Item ===
 #       then a blank line.
-
+print("   === MARKETING: Revenue by Item ===")
+print()
 
 # 1. Extract — the same source Finance uses, called the same way.
 # TODO
+raw_data = get_raw_sales_data(seed)
 
 
 # 2. Transform — clean the rows, roll them up to one entry per item, then find the
 #    best entry twice: once by "revenue", once by "units_sold". They are usually
 #    different products, which is the whole reason Marketing asked.
 # TODO
-
+clean_data = clean_sales_data(raw_data)
+summarized_data = summarize_by_item(clean_data)
+sales_winner = find_top_entry(summarized_data, "units_sold")
+revenue_winner = find_top_entry(summarized_data)
 
 # 3. Load — the item table, a blank line, then two headline lines. Match this
 #    layout exactly, including the padding that lines the two values up:
@@ -55,3 +63,7 @@ import sys
 #        Top seller by revenue: Gizmo Pro ($1,200.00)
 #        Top seller by units:   Widget C (15 units)
 # TODO
+revenue_winner_total = revenue_winner["revenue"]
+print_item_table(summarized_data)
+print(f"Top seller by revenue: {revenue_winner["item"]} (${revenue_winner_total:,.2f})")
+print(f"Top seller by units:   {sales_winner["item"]} ({sales_winner["units_sold"]} units)")
