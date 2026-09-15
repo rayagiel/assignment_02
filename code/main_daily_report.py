@@ -40,20 +40,16 @@ Before running:  pip install -r requirements.txt
 # you need a calculation this file cannot get by calling the package, the
 # calculation belongs in sales_pipeline/transform.py.
 
-# imports 
 import sys
 from sales_pipeline import get_raw_sales_data, clean_sales_data, summarize_by_day, print_day_table, calculate_total_revenue, find_top_entry
 
-# seed handling
 seed = None
 if len(sys.argv) > 1 and sys.argv[1].strip() != "":
     seed = int(sys.argv[1])
 
-# program 
 print('   === OPERATIONS: Sales by Day ===')
 print()
 
-# data handling
 raw_data = get_raw_sales_data(seed)
 clean_data = clean_sales_data(raw_data)
 summary_by_date = summarize_by_day(clean_data)
